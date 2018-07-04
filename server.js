@@ -45,6 +45,9 @@ app.get('/status', (req, res) => {
   res.json({ processId: process.pid });
 });
 
+// Static files
+app.use(express.static('./public'));
+
 
 // Starting and Ending Scripts
 let server;

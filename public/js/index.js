@@ -4,12 +4,16 @@ $(function() {
             url: '/api/auth/login',
             method: 'POST',
             data: {
-                name: 'admin3',
-                password: 'admin',
+                username : 'admin3',
+                password : 'admin',
             },
             success: (response) => {
                 sessionStorage.setItem('token', response.token);
-                location.href = '/protected.html';
+                //location.href = '/protected.html';
+            },
+
+            failure: (response) => {
+                console.log(response)
             }
         })
     })

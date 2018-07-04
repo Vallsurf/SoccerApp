@@ -29,6 +29,7 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 router.post('/login', disableWithToken, requiredFields('username', 'password'), (req, res) => {
      User.find({ username: req.body.username },{ password: req.body.password})
     .then((foundResult) => {
+    	console.log(foundResult)
         if (!foundResult) {
             return res.status(400).json({
                 generalMessage: 'Username or password is incorrect',
