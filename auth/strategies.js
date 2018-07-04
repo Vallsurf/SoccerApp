@@ -1,54 +1,28 @@
-'use strict';
-const { Strategy: LocalStrategy } = require('passport-local');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const User = require('../models/users.model');
+const config = require('../config');
 
-const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
-const { User } = require('../users/models');
-const { JWT_SECRET } = require('../config');
-
-const localStrategy = new LocalStrategy((username, password, callback) => {
-  let user;
-  User.findOne({ username: username })
-    .then(_user => {
-      user = _user;
-      if (!user) {
-        // Return a rejected promise so we break out of the chain of .thens.
-        // Any errors like this will be handled in the catch block.
-        return Promise.reject({
-          reason: 'LoginError',
-          message: 'Incorrect username or password'
-        });
-      }
-      return user.validatePassword(password);
-    })
-    .then(isValid => {
-      if (!isValid) {
-        return Promise.reject({
-          reason: 'LoginError',
-          message: 'Incorrect username or password'
-        });
-      }
-      return callback(null, user);
-    })
-    .catch(err => {
-      if (err.reason === 'LoginError') {
-        return callback(null, false, err);
-      }
-      return callback(err, false);
-    });
-});
-
-const jwtStrategy = new JwtStrategy(
-  {
-    secretOrKey: JWT_SECRET,
-    // Look for the JWT as a Bearer auth header
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
-    // Only allow HS256 tokens - the same as the ones we issue
-    algorithms: ['HS256']
-  },
-  (payload, done) => {
-    done(null, payload.user);
-  }
-);
-
-module.exports = { localStrategy, jwtStrategy };
+module.exports = (passport) => {
+    const options = {};
+    options.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
+    options.secretOrKey = config.JWT_SECRET;
+    passport.use(new JwtStrategy(options, (jwtPayload, done) => {
+        User.findById(jwtPayload._id)
+            .then((user) => {
+                if (user) {
+                    const userData = {
+                        _id: user._id,
+                        email: user.email,
+                        username: user.username,
+                        role: user.role,
+                    };
+                    done(null, userData);
+                } else {
+                    done(null, false);
+                }
+            })
+            .catch(error => done(error, false));
+    }));
+};
