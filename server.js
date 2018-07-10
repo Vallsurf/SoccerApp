@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const { router: usersRouter } = require('./routers/users.router');
+const { router: playersRouter } = require('./routers/players.router');
 const { router: teamRouter } = require('./routers/team.router');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./routers/auth.router');
 
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/teams', teamRouter);
+app.use('/api/players', playersRouter);
 
 
 app.get('/status', (req, res) => {

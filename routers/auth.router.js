@@ -13,34 +13,22 @@ const requiredFields = require('../middlewares/requiredFields.middleware');
 
 require('../auth/strategies')(passport);
 
-const createAuthToken = function (user) {
-    return jwt.sign({ user }, config.JWT_SECRET, {
-        subject: user.username,
-        expiresIn: config.JWT_EXPIRY,
-        algorithm: 'HS256',
-    });
-};
-
-const localAuth = passport.authenticate('local', { session: false });
-router.use(bodyParser.json());
-
-const jwtAuth = passport.authenticate('jwt', { session: false });
-
 // The user provides a username and password to login
 router.post('/login', requiredFields('username', 'password'), (req, res) => {
-    User.find({ username: req.body.username }, { password: req.body.password })
+    User.findOne({ username: req.body.username })
         .then((foundResult) => {
-    	console.log(foundResult);
             if (!foundResult) {
                 return res.status(400).json({
                     generalMessage: 'Username or password is incorrect',
                 });
             }
+            console.log(foundResult);
             return foundResult;
         })
         .then((foundUser) => {
+            const user_id = foundUser._id;
             const tokenPayload = {
-                _id: foundUser._id,
+                _id: user_id,
                 username: foundUser.username,
             };
             const token = jwt.sign(tokenPayload, config.JWT_SECRET, {
@@ -52,11 +40,5 @@ router.post('/login', requiredFields('username', 'password'), (req, res) => {
         .catch(report => res.status(400).json(errorsParser.generateErrorResponse(report)));
 });
 
-
-// The user exchanges a valid JWT for a new one with a later expiration
-router.post('/refresh', jwtAuth, (req, res) => {
-    const authToken = createAuthToken(req.user);
-    res.json({ authToken });
-});
 
 module.exports = { router };

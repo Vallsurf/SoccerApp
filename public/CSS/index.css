@@ -1,0 +1,99 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+
+.login-container {
+	width: 50% ;
+	height: auto;
+	margin: 0 auto;
+	margin-top:10%;
+	display: block;
+	border-radius: 6px 6px 3px 3px;
+    box-sizing: border-box;
+   
+}
+
+
+.hidden { display: none; }
+
+.table th {
+   text-align: center;   
+}
+
+.login-container button{
+	width: 60% ;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: 1px solid;
+}
+
+
+.createteam button{
+	width: 40% ;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: 1px solid;
+}
+
+
+.login-container h1{
+text-align: center;
+}
+.form-box {
+	display: inherit;
+}
+
+.form-box input {
+	display: block;
+	margin: 0 auto;
+	margin-top:10px;
+	padding: 5px; 
+	font-size:18px;
+}
+
+.home-container{
+	width: 70% ;
+	text-align: center;
+	height: auto;
+	margin: 0 auto;
+	margin-top:10%;
+	display: block;
+	border-radius: 6px 6px 3px 3px;
+    box-sizing: border-box;
+}
+
+.teams-container{
+	width: 70% ;
+	margin: 0 auto;
+	text-align: left;
+
+}
+
+.team {
+	 border: black 1px solid;
+	 padding: 10px;
+	 margin: 5px;
+}
+
+.teaminfo {
+	width:70%;
+	display: block;
+	 margin: 0 auto;
+	 border: black 1px solid;
+	 padding: 10px;
+	 
+}
+
+.warning {
+	color: red; 
+}
+
+#teamname {
+	margin:0 auto;
+	width: 60%;
+}

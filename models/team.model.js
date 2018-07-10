@@ -8,19 +8,18 @@ const teamSchema = mongoose.Schema({
 
     },
     formation: {
-        Forward1: String,
-        Forward2: String,
-        Midfield1: String,
-        Midfield2: String,
-        Defense1: String,
-        Defense2: String,
-        Utility: String,
-        Goalie: String,
+        Forward1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Forward2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Midfield1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Midfield2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Defense1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Defense2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Utility: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Goalie: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
     },
+    //
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 
-    userowner: {
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-    },
 },
 {
     timestamps: true,

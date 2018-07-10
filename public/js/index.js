@@ -1,6 +1,7 @@
-$(() => {
-    $('#login').click(() => {
-        const data = { username: 'admin3', password: 'admin' };
+function locateButtonClick() {
+    $('.login').on('click', (event) => {
+        event.preventDefault();
+        const data = { username: 'admin5', password: 'admin' };
         $.ajax({
             url: '/api/auth/login',
             method: 'POST',
@@ -12,4 +13,7 @@ $(() => {
             },
         });
     });
-});
+}
+
+
+$(locateButtonClick);
