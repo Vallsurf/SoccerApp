@@ -18,23 +18,35 @@ router.post('/login', requiredFields('username', 'password'), (req, res) => {
     User.findOne({ username: req.body.username })
         .then((foundResult) => {
             if (!foundResult) {
-                return res.status(400).json({
-                    generalMessage: 'Username or password is incorrect',
+                return Promise.reject({
+                    reason: 'ValidationError',
+                    message: 'Username or password is incorrect',
                 });
             }
-            console.log(foundResult);
             return foundResult;
         })
+
         .then((foundUser) => {
-            const user_id = foundUser._id;
-            const tokenPayload = {
-                _id: user_id,
-                username: foundUser.username,
-            };
-            const token = jwt.sign(tokenPayload, config.JWT_SECRET, {
-                expiresIn: config.JWT_EXPIRY,
-            });
-            return res.json({ token });
+            foundUser.comparePassword(req.body.password)
+                .then((comparingResult) => {
+                    console.log(comparingResult);
+                    if (!comparingResult) {
+                        return res.status(400).json({
+                            generalMessage: 'Email or password is incorrect',
+                        });
+                    }
+
+                    const user_id = foundUser._id;
+                    const tokenPayload = {
+                        _id: user_id,
+                        username: foundUser.username,
+                    };
+                    const token = jwt.sign(tokenPayload, config.JWT_SECRET, {
+                        expiresIn: config.JWT_EXPIRY,
+                    });
+
+                    return res.json({ token });
+                });
         })
 
         .catch(report => res.status(400).json(errorsParser.generateErrorResponse(report)));

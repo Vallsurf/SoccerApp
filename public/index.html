@@ -2,25 +2,53 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Soccer App</title>
+    <title>Soccer World</title>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/index.css" type="text/css" />
+<link rel="icon" type="image/png" href="/css/logo.png" />
   </head>
   <body>
     
     <div class="container">
+      <img src="/css/logo.png" />
   <div class="login-container">
-      <h1> Welcome To Soccer World!</h1>
-            <div class="form-box">
+      <h1> Fantasy Soccer World</h1>
+            <div class="login form-box">
                 <form action="" method="">
-                    <input name="user" type="text" placeholder="username">
-                    <input type="password" placeholder="password">
+                    <input name="username" id="username" type="text" placeholder="username" required>
+                    <input type="password" id="password" placeholder="password" required>
                     <button class="btn btn-info btn-block login" type="submit" id="login">Login</button>
                 </form>
             </div>
+            <a class="Create" href='#'>Create an Account</a>
         </div>
-        
+
+
+        <div class="createForm hidden">
+          <h1>Create An Account</h1>
+            <div class="createAccount form-box">
+               <div class="col-md-12">
+                <form class="makeNew" action="" method="">
+                  <div class="form-group row">
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                  </div>
+                  <div class="form-group row">
+                    <input name="newusername" id="newusername" type="text" placeholder="User Name" required>
+                  </div>
+                    <input type="password" id="newpassword" placeholder="Password" required>
+                    <button class="btn btn-info btn-block createAccount" type="submit" id="createAccount">Create</button>
+                </form>
+              </div>
+              <a class="back" href='/'>Back</a>
+            </div>
+            
+        </div>
+        <div class="successful hidden">
+          <h3>Account created!</h3>
+          <a href="/">Login</a>
+        </div>
 </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

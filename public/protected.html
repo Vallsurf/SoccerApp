@@ -4,15 +4,32 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/index.css" type="text/css" />
+<link rel="icon" type="image/png" href="/css/logo.png" />
+<link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Soccer App</title>
   </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light " >
+  <a class="navbar-brand" href="#">
+    <span><img src="/css/logo.png" width="30" height="30" alt="" ></span>
+    Soccer World
+  </a>
+<ul class="nav navbar-nav d-flex justify-content-end">
+
+      <li><a href="/protected.html">Home</a></li>
+      <li><a href="#" class="logout">Logout</a></li>
+      <li class="username"></li>
+    </ul>
+
+
+</nav>
+
     <div class ="home-container">
-    <h1>Fantasy Soccer</h1>
     <h2 id="email"></h2>
     <div class="teams-container">
-    <h2>My teams</h2>
-    <a class = "create">Create New Team</a>
+    <h2>My Teams</h2>
+    <a class = "create" href="/">Create New Team</a>
     <div id="teams"></div>
     </div>
     <div class="createteam hidden">

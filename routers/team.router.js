@@ -24,7 +24,7 @@ router.route('/')
                 formation: req.body.formation,
                 owner: req.user._id,
             })
-            .then(team => res.status(201).json({message: "Team Created!"}))
+            .then(team => res.status(201).json({ message: 'Team Created!' }))
             .catch((err) => {
                 console.error(err);
                 res.status(500).json({ error: 'Something went wrong' });
@@ -34,7 +34,7 @@ router.route('/')
 //  get a new team by User
     .get(jwttoken, (req, res) => {
         Team.find({ owner: req.user._id })
-            .populate('formation.Forward1 formation.Forward2 formation.Midfield1 formation.Midfield2 formation.Defense1 formation.Defense2 formation.Utility formation.Goalie')
+            .populate('formation.Player1 formation.Player2 formation.Player3 formation.Player4 formation.Player5 formation.Player6 formation.Player7 formation.Player8')
             .exec()
             .then(teams => res.json(teams))
             .catch(err => res.status(500).json({ message: err }));
@@ -45,7 +45,7 @@ router.route('/:id')
     .get((req, res) => {
         Team
             .findById(req.params.id)
-            .populate('formation.Forward1 formation.Forward2 formation.Midfield1 formation.Midfield2 formation.Defense1 formation.Defense2 formation.Utility formation.Goalie')
+            .populate('formation.Player1 formation.Player2 formation.Player3 formation.Player4 formation.Player5 formation.Player6 formation.Player7 formation.Player8')
             .then(team => res.json(team))
             .catch(err => res.status(500).json({ message: 'Internal server error' }));
     })
@@ -66,7 +66,11 @@ router.route('/:id')
 router.route('/roster/:id')
     .patch((req, res) => {
         if (!(req.params.id === req.body.id)) {
+            console.log(`params: ${req.params.id}`),
+            console.log(req.body.id),
             res.status(400).json({
+                message: req.params.id,
+                message: req.body.id,
                 error: 'Request path id and request body id values must match',
             });
         }

@@ -8,14 +8,14 @@ const teamSchema = mongoose.Schema({
 
     },
     formation: {
-        Forward1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Forward2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Midfield1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Midfield2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Defense1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Defense2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Utility: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
-        Goalie: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player1: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player2: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player3: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player4: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player5: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player6: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player7: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
+        Player8: { type: mongoose.Schema.Types.ObjectId, ref: 'Player' },
     },
     //
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

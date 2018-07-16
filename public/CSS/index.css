@@ -11,10 +11,11 @@ body {
 	width: 50% ;
 	height: auto;
 	margin: 0 auto;
-	margin-top:10%;
+	margin-top:2%;
 	display: block;
 	border-radius: 6px 6px 3px 3px;
     box-sizing: border-box;
+    text-align: center; 
    
 }
 
@@ -32,6 +33,21 @@ body {
 	border: 1px solid;
 }
 
+.createForm button{
+	width: 30% ;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: 1px solid;
+}
+
+.container img{
+	width: 20% ;
+	margin: 0 auto;
+	margin-top: 10px;
+	display: block;
+	
+}
+
 
 .createteam button{
 	width: 40% ;
@@ -41,15 +57,20 @@ body {
 }
 
 
-.login-container h1{
-text-align: center;
-}
 .form-box {
 	display: inherit;
 }
 
 .form-box input {
 	display: block;
+	margin: 0 auto;
+	margin-top:10px;
+	padding: 5px; 
+	font-size:18px;
+}
+
+.createAccount input  {
+	display: inline-block;
 	margin: 0 auto;
 	margin-top:10px;
 	padding: 5px; 
@@ -71,6 +92,12 @@ text-align: center;
 	width: 70% ;
 	margin: 0 auto;
 	text-align: left;
+	font-family: 'Playfair Display', serif;
+
+}
+.teams-container h2{
+		font-family: 'Graduate', cursive;
+	text-align: center;
 
 }
 
@@ -84,16 +111,63 @@ text-align: center;
 	width:70%;
 	display: block;
 	 margin: 0 auto;
-	 border: black 1px solid;
-	 padding: 10px;
-	 
 }
 
 .warning {
 	color: red; 
 }
 
+.createForm{
+	text-align: center;
+}
+
+
 #teamname {
 	margin:0 auto;
 	width: 60%;
+}
+
+#editSubmit{
+	width: auto;
+	margin: 0 auto;
+}
+
+.edit {
+	width:100%;
+	text-align: right;
+	margin:10px;
+}
+
+.navbar {
+	background-color: #313639;
+	color: white;
+
+}
+
+.navbar a {
+
+	color: white;
+}
+
+.navbar li a:hover {
+	color: #ffb834;
+	background-color: #313639;
+}
+
+.navbar ul {
+	float:right;
+}
+
+.navbar p{
+	padding: 15px;
+	margin: 0px;
+	font-style: italic;
+}
+
+.successful {
+	text-align: center;
+}
+
+.successful h3{
+	color: green;
 }
