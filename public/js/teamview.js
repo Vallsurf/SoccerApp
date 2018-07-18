@@ -217,6 +217,14 @@ function submitEdit() {
     });
 }
 
+function navbar() {
+    $('.logout').on('click', () => {
+        sessionStorage.removeItem('token');
+        location.href = '/';
+    });
+}
+
 $(loadTeam);
 $(submitEdit);
 $(getPlayers);
+$(navbar);

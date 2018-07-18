@@ -15,7 +15,6 @@ const { Player } = require('../models/players.model');
 // }
 
 function generatePlayerData() {
-    console.log('Generating post data...');
     return {
         name: faker.name.firstName(),
         position: generatePosition(),
@@ -24,22 +23,19 @@ function generatePlayerData() {
 }
 
 function generatePosition() {
-  const position = [
-    'Forward', 'Defender', 'Goalkeeper', 'Midfielder'];
-  return position[Math.floor(Math.random() * position.length)];
+    const position = [
+        'Forward', 'Defender', 'Goalkeeper', 'Midfielder'];
+    return position[Math.floor(Math.random() * position.length)];
 }
 
-function seedPlayerData () {
-  const seedData = [];
-
-  for (let i=1; i<=10; i++) {
-    seedData.push(generatePlayerData());
-  }
-
-  console.log(seedData); 
-  // this will return a promise
-  return Player.insertMany(seedData);
-
+function seedPlayerData() {
+    return new Promise((resolve, reject) => {
+        const seedData = [];
+        for (let i = 1; i <= 8; i++) { seedData.push(generatePlayerData()); }
+        Player.insertMany(seedData)
+            .then(result => resolve(result))
+            .catch(err => reject(err));
+    });
 }
 
 function createTestUser() {
@@ -47,12 +43,32 @@ function createTestUser() {
 }
 
 function getPlayers() {
-    var x = Player.find()
-    .then(result => { console.log(result)
-        Promise.done()
+    return new Promise((resolve, reject) => {
+        Player.find()
+            .then((data) => {
+                newobj = {
+                    name: faker.company.companyName(),
+                    formation: {
+                        Player1: data[0]._id,
+                        Player2: data[1]._id,
+                        Player3: data[2]._id,
+                        Player4: data[3]._id,
+                        Player5: data[4]._id,
+                        Player6: data[5]._id,
+                        Player7: data[6]._id,
+                        Player8: data[7]._id,
+
+                    },
+                };
+                return newobj;
+            })
+            .then((result) => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
     });
-    return x
 }
+
 
 function generateUserData() {
     console.log('Generating user data...');
@@ -80,5 +96,5 @@ function tearDownDb() {
 }
 
 module.exports = {
-    generatePlayerData, generateUserData, createTestUser, tearDownDb, seedPlayerData, getPlayers
+    generatePlayerData, generateUserData, createTestUser, tearDownDb, seedPlayerData, getPlayers,
 };
