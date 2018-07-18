@@ -18,7 +18,7 @@ router.use(jsonParser);
 router.route('/')
     .get((req, res) => {
         Player.find()
-            .then(players => res.json(players))
+            .then(players => res.status(200).json(players))
             .catch(err => res.status(500).json({ message: 'Internal server error' }));
     });
 

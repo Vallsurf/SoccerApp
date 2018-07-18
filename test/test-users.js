@@ -31,7 +31,7 @@ describe('/api/users', () => {
 
     describe('/api/users', () => {
         describe('POST', () => {
-            it('Should reject users with missing username', () => chai
+            it('Should reject creating users with missing username', () => chai
                 .request(app)
                 .post('/api/users')
                 .send({
@@ -51,7 +51,7 @@ describe('/api/users', () => {
                     expect(res.body.messages[0]).to.equal('There is missing username in your request body');
                 }));
 
-            it('Should reject users with missing password', () => chai
+            it('Should reject creating users with missing password', () => chai
                 .request(app)
                 .post('/api/users')
                 .send({
@@ -70,7 +70,7 @@ describe('/api/users', () => {
                     expect(res.body.messages[0]).to.equal('There is missing password in your request body');
                 }));
 
-            it('Should reject users with empty username', () => chai
+            it('Should reject creating users with empty username', () => chai
                 .request(app)
                 .post('/api/users')
                 .send({
@@ -90,7 +90,7 @@ describe('/api/users', () => {
                     expect(res.body.messages[0]).to.equal('Path `username` is required.');
                 }));
 
-            it('Should reject users with duplicate username', () => User.create({
+            it('Should reject creating users with duplicate username', () => User.create({
                 username,
                 password,
                 firstname,

@@ -26,11 +26,10 @@ router.route('/')
         const {
             username, password, firstName = '', lastName = '',
         } = req.body;
-        console.log({ username });
+
         return User.find({ username })
             .count()
             .then((count) => {
-                console.log(count);
                 if (count > 0) {
                     // There is an existing user with the same username
                     return Promise.reject({

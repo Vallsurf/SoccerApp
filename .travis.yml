@@ -3,4 +3,5 @@ node_js: node
 services: 
   - mongodb
 
-
+before_script:
+  - sleep 15
