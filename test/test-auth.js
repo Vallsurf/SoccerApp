@@ -84,7 +84,7 @@ describe('Auth endpoints', () => {
                 const payload = jwt.verify(token, JWT_SECRET, {
                     algorithm: ['HS256'],
                 });
-                
+
                 expect(payload.username).to.deep.equal(username);
             }));
     });

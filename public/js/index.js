@@ -18,20 +18,36 @@ function login() {
             },
 
             error: (err) => {
-                console.log(err);
+                  
+                 $('.alert').attr('aria-hidden','false').removeClass('hidden');
+  
             },
 
         });
     });
 }
 
+
+
 function createAccount() {
-    $('.Create').on('click', (event) => {
-        event.preventDefault();
-        $('.login-container').addClass('hidden');
+$('.Create').on('click', function () {
+    
+    if($('.createForm').is(':visible')){
+        $('.createForm').addClass('hidden');
+    } else {
         $('.createForm').removeClass('hidden');
-    });
+    }
+});
+
 }
+
+function selectLogin() {
+$('.landing').on('click', 'button.SelectLogin', function () {
+    console.log('hello')
+    location.href = '/login.html';    
+});
+
+}    
 
 function submitNew() {
     $('.createAccount').submit((event) => {
@@ -69,3 +85,4 @@ function submitNew() {
 $(login);
 $(createAccount);
 $(submitNew);
+$(selectLogin);

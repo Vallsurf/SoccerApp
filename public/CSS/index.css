@@ -1,28 +1,51 @@
-html {
-  min-height: 100%;
+body, html {
+    height: 100%;
 }
 
-body {
-  background-color: black;
+.welcome{
+
+	background-color: black;
+	background-image: url("/CSS/hero.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
+
+legend {
+	color: white;
+	font-family: 'Prosto One', cursive;
+}
 
 .login-container {
-	color: white;
-	width: 50% ;
-	height: auto;
-	margin: 0 auto;
-	margin-top:2%;
 	display: block;
-	border-radius: 6px 6px 3px 3px;
-    box-sizing: border-box;
-    text-align: center; 
-   
+  	text-align: center; 
+  	align-items: center; 
+  	margin-top: 20%;
+	   
 }
+
+.landing button{
+	display:inline-block;
+	width:20%;
+	background-color: green;
+	border:none;
+	margin-top:5px;
+}
+
 
 
 .login-container h1{
 font-family: 'Prosto One', cursive;
+color: white;
+   
+}
+
+.login-container h3{
+font-family: 'Prosto One', cursive;
+color: white;
    
 }
 
@@ -34,19 +57,39 @@ font-family: 'Prosto One', cursive;
    text-align: center;   
 }
 
-.login-container button{
-	width: 60% ;
-	margin: 0 auto;
-	margin-top: 10px;
+.login {
 	
+	width: 60%;
+	margin: 4% auto;
+	padding: 2%;
+}
+
+.login button {
+	background-color: green; 
+	border:none;
+}
+
+.alert {
+	color:red;
+}
+.createForm {
+	
+	width: 60%;
+	margin: 4% auto;
+	padding: 2%;
+
 }
 
 .createForm button{
-	width: 30% ;
+	width: 60% ;
 	margin: 0 auto;
 	margin-top: 10px;
-	border: 1px solid;
+	background-color: green;
+	border:none;
+	
 }
+
+
 
 .container img{
 	width: 20% ;
@@ -61,7 +104,7 @@ font-family: 'Prosto One', cursive;
 	width: 40% ;
 	margin: 0 auto;
 	margin-top: 10px;
-	border: 1px solid;
+	
 }
 
 

@@ -66,7 +66,7 @@ describe('Team endpoints', () => {
                 .then((res) => {
                     expect(res).to.have.status(201);
 			  		expect(res).to.be.json;
-			  		expect(res.body.message).to.equal('Team Created!')
+			  		expect(res.body.message).to.equal('Team Created!');
                 });
         });
     });
