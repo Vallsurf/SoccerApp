@@ -26,7 +26,6 @@ router.route('/')
             })
             .then(team => res.status(201).json({ message: 'Team Created!' }))
             .catch((err) => {
-                console.error(err);
                 res.status(500).json({ error: 'Something went wrong' });
             });
     })
@@ -57,7 +56,6 @@ router.route('/:id')
                 res.status(204).json({ message: 'success' });
             })
             .catch((err) => {
-                console.error(err);
                 res.status(500).json({ error: 'something went terribly wrong' });
             });
     });
@@ -66,21 +64,14 @@ router.route('/:id')
 router.route('/roster/:id')
     .patch((req, res) => {
         if (!(req.params.id === req.body.id)) {
-            console.log(`params: ${req.params.id}`),
-            console.log(req.body.id),
             res.status(400).json({
-                message: req.params.id,
-                message: req.body.id,
                 error: 'Request path id and request body id values must match',
             });
         }
-
         const newobj = {};
-
         Object.keys(req.body).forEach((key) => {
-            if (key == 'formation') {
+            if (key === 'formation') {
                 Object.keys(req.body.formation).forEach((formationkey) => {
-                    console.log(key);
                     newobj[`${key}.${formationkey}`] = req.body[key][formationkey];
                 });
             }
@@ -88,12 +79,6 @@ router.route('/roster/:id')
                 newobj[key] = req.body[key];
             }
         });
-
-        console.log(newobj);
-
-        // const updated = { 'formation.Forward1': 'newplayer', 'formation.Forward2': 'newplayer' };
-
-
         Team
             .findByIdAndUpdate(req.params.id, { $set: newobj }, { new: true })
             .then(updatedPost => res.status(204).end())

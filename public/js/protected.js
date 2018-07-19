@@ -8,8 +8,8 @@ function parseJwt(token) {
 function getToken() {
     const token = sessionStorage.getItem('token');
     if (!token) {
-        location.href = 'http://localhost:3000/';
-    } else { return token; }
+        return window.location.href = 'http://localhost:3000/';
+    } return token;
 }
 
 function getTeams() {
@@ -21,14 +21,13 @@ function getTeams() {
         },
         success: (response) => {
             const payloadData = parseJwt(token);
-            // console.log(payloadData);
             $('.username').html(`<p>${payloadData.username}</p>`);
             for (let i = 0; i < response.length; i++) {
-                const base_url = window.location.origin;
+                const baseUrl = window.location.origin;
                 $('#teams').append(
                     `<div class ="team row row-eq-height">
                      <div class ="col-md-8"> ${response[i].name} </div>
-                     <div class ="col-md-2"><a href='${base_url}/teamview.html#${response[i]._id}'>View/Edit</a></div>
+                     <div class ="col-md-2"><a href='${baseUrl}/teamview.html#${response[i]._id}'>View/Edit</a></div>
                      <div class ="col-md-2"><a class="delete" data-id="${response[i]._id}" href='#'>Delete</a>
                      <button class="btn btn-info btn-block ${response[i]._id} hidden confirmdelete" data-id="${response[i]._id}" type="submit">Delete?</button></div>
                      </div> `,
@@ -37,32 +36,14 @@ function getTeams() {
         },
         error: () => {
             sessionStorage.removeItem('token');
-            location.href = 'http://localhost:3000/';
+            window.location.href = 'http://localhost:3000/';
         },
     });
 }
 
-
-// function promptDelete(element) {
-//     console.log(element.id);
-//     const teamid = element.id
-//     if ( $(`.${teamid}`).is(":visible") )
-//     {
-//         $(`.${teamid}`).addClass('hidden');
-//     }
-//     else
-//     {
-//     $(`.${teamid}`).removeClass('hidden'); // make if statement to turn off here
-//     }
-// }
-
-
 function promptDelete() {
-    $('#teams').on('click', '.delete', function () {
-        console.log(this);
-
+    $('#teams').on('click', '.delete', function showdelete() {
         const teamid = $(this).attr('data-id');
-        console.log(teamid);
         if ($(`.${teamid}`).is(':visible')) {
             $(`.${teamid}`).addClass('hidden');
         } else {
@@ -82,7 +63,7 @@ function deleteTeam() {
                 Authorization: `Bearer ${token}`,
             },
             success: (response) => {
-                location.href = '/protected.html';
+                window.location.href = '/protected.html';
             },
             error: (err) => {
                 console.log(err);
@@ -90,28 +71,6 @@ function deleteTeam() {
         });
     });
 }
-
-
-// function deleteTeam(element) {
-//         const token = getToken();
-//         const teamid = element.id
-
-//          $.ajax({
-//                 url: `/api/teams/${teamid}`,
-//                 method: 'DELETE',
-//                 headers: {
-//                     Authorization: `Bearer ${token}`,
-//                 },
-//                 success: (response) => {
-//                     const base_url = window.location.origin;
-//                     location.href = `${base_url}/protected.html`;
-//                 },
-//                 error: (err) => {
-//                     console.log(err);
-//                 },
-//             });
-// }
-
 
 function createTeam() {
     $('.create').on('click', (event) => {
@@ -125,7 +84,6 @@ function createTeam() {
             },
             success: (response) => {
                 $('.teams-container').hide();
-                console.log(response);
                 $('.createteam').removeClass('hidden');
                 for (let i = 0; i < response.length; i++) {
                     $('.createteam tbody').append(
@@ -141,7 +99,7 @@ function createTeam() {
             },
             error: () => {
                 sessionStorage.removeItem('token');
-                location.href = 'http://localhost:3000/';
+                window.location.href = 'http://localhost:3000/';
             },
         });
     });
@@ -153,15 +111,13 @@ function submitNewTeam() {
 
         const newName = teamname.value;
         const subPlayers = $('input[name=selectedPlayer]:checked').map((i, values) => $(values).val()).get();
-
-        console.log(subPlayers);
-        if (!(subPlayers.length == 8)) {
+        if (!(subPlayers.length === 8)) {
             $('.warning').html('<h4>You Must Select 8 Players</h4>').attr('hidden', false);
             return false;
         }
 
-        // hides warning if present
         $('.warning').attr('hidden', true);
+
         // creates object of checked selection
         const newteam = {
             name: `${newName}`,
@@ -176,9 +132,7 @@ function submitNewTeam() {
                 Player8: subPlayers[7],
             },
         };
-
         const token = getToken();
-
         $.ajax({
             url: '/api/teams',
             method: 'POST',
@@ -188,8 +142,7 @@ function submitNewTeam() {
             },
             data: JSON.stringify(newteam),
             success: (response) => {
-                console.log('added');
-                location.href = '/protected.html';
+                window.location.href = '/protected.html';
             },
         });
         return true;
@@ -200,7 +153,7 @@ function submitNewTeam() {
 function navbar() {
     $('.logout').on('click', () => {
         sessionStorage.removeItem('token');
-        location.href = '/';
+        window.location.href = '/';
     });
 }
 
@@ -211,35 +164,3 @@ $(submitNewTeam);
 $(promptDelete);
 $(deleteTeam);
 $(navbar);
-
-
-// $(createSubmit);
-// function createSubmit() {
-//     $('#createSubmit').on('click', (event) => {
-//         event.preventDefault();
-//         // const teamName = $('input[name=teamname]').val();
-//         const newName = teamname.value
-//         console.log(newName);
-//         const subPlayers = $('input[name=selectedPlayer]:checked').map((i, values) => $(values).val()).get();
-
-//         if (!(subPlayers.length == 8)) { $('.warning').html('<h4>You Must Select 8 Players</h4>').attr('hidden', false); }
-//         else {
-
-//             $('.warning').attr('hidden', true);
-//             const newteam = {name: 'My Team 2',
-//                             formation: {
-//                     Forward1: subPlayers[0],
-//                     Forward2: subPlayers[1],
-//                     Midfield1: subPlayers[2],
-//                     Midfield2: subPlayers[3],
-//                     Defense1: subPlayers[4],
-//                     Defense2: subPlayers[5],
-//                     Utility: subPlayers[6],
-//                     Goalie: subPlayers[7]
-//                 }
-//             };
-//                 console.log(newteam);
-//             }
-
-//     });
-// }

@@ -1,18 +1,14 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-
 const { User } = require('../models/users.model');
-const { Team } = require('../models/team.model');
 const { Player } = require('../models/players.model');
 
-// function sendAllDataToDb() {
-//   console.info('Sending data to database...');
-//   const testData = [];
-//   for (let i=1; i<=2; i++) {
-//     testData.push(createTestUserAndPost());
-//   }
-//   return Post.insertMany(testData);
-// }
+
+function generatePosition() {
+    const position = [
+        'Forward', 'Defender', 'Goalkeeper', 'Midfielder'];
+    return position[Math.floor(Math.random() * position.length)];
+}
 
 function generatePlayerData() {
     return {
@@ -20,12 +16,6 @@ function generatePlayerData() {
         position: generatePosition(),
 
     };
-}
-
-function generatePosition() {
-    const position = [
-        'Forward', 'Defender', 'Goalkeeper', 'Midfielder'];
-    return position[Math.floor(Math.random() * position.length)];
 }
 
 function seedPlayerData() {
@@ -38,9 +28,6 @@ function seedPlayerData() {
     });
 }
 
-function createTestUser() {
-    return User.create(generateUserData());
-}
 
 function getPlayers() {
     return new Promise((resolve, reject) => {
@@ -84,7 +71,6 @@ function generateUserData() {
 function createTestUser() {
     return User.create(generateUserData());
 }
-
 
 function tearDownDb() {
     return new Promise((resolve, reject) => {

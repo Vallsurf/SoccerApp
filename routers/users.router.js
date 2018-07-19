@@ -1,12 +1,6 @@
 
 const express = require('express');
 const passport = require('passport');
-const bodyParser = require('body-parser');
-
-const jsonParser = bodyParser.json();
-const { User } = require('../models/users.model');
-const jwt = require('jsonwebtoken');
-const config = require('../config');
 require('../auth/strategies')(passport);
 
 const jwttoken = passport.authenticate('jwt', { session: false });
@@ -15,7 +9,7 @@ const jwttoken = passport.authenticate('jwt', { session: false });
 const disableWithToken = require('../middlewares/disableWithToken.middleware').disableWithToken;
 const requiredFields = require('../middlewares/requiredFields.middleware');
 const errorsParser = require('../errorsParser.js');
-
+const { User } = require('../models/users.model');
 
 const router = express.Router();
 
@@ -48,7 +42,6 @@ router.route('/')
                 lastname: req.body.lastname,
             }))
             .then(user => res.status(201).json({
-
                 message: `User ${user.username} created!`,
             }))
 

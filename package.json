@@ -31,8 +31,9 @@
     "test": "mocha --exit",
     "start": "node server.js",
     "lint": "eslint --ext .js ./ || exit 0",
-    "lint-fix": "eslint --fix --ext .js ./ || exit 0"
+    "lint-fix": "eslint --fix --ext .js ./ --env jquery,browser,node,mocha|| exit 0"
   },
+
   "author": "",
   "license": "ISC"
 }

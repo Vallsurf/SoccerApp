@@ -1,30 +1,19 @@
-
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
 const { router: usersRouter } = require('./routers/users.router');
 const { router: playersRouter } = require('./routers/players.router');
 const { router: teamRouter } = require('./routers/team.router');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./routers/auth.router');
-
+const { router: authRouter } = require('./routers/auth.router');
 
 const app = express();
-
 mongoose.Promise = global.Promise;
-
 const { PORT, DATABASE_URL } = require('./config');
 
-
 app.use(bodyParser.json());
-
-// Logging
 app.use(morgan('common'));
-// Logging
-// morgan.token('processId', () => process.pid);
-// app.use(morgan(':processId - :method :url :status :response-time ms - :res[content-length]'));
 
 
 // CORS

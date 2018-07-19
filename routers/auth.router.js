@@ -1,14 +1,12 @@
 
 const express = require('express');
 const passport = require('passport');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 const router = express.Router();
 const errorsParser = require('../errorsParser.js');
 const { User } = require('../models/users.model');
-const disableWithToken = require('../middlewares/disableWithToken.middleware').disableWithToken;
 const requiredFields = require('../middlewares/requiredFields.middleware');
 
 require('../auth/strategies')(passport);
@@ -31,9 +29,6 @@ router.post('/login', requiredFields('username', 'password'), (req, res) => {
 
         .then((foundUser) => {
             if (!foundUser) {
-                // return res.status(401).json({
-                //     generalMessage: 'Email or password is incorrect',
-                // });
                 return Promise.reject({
                     code: 401,
                     reason: 'LoginError',
@@ -41,9 +36,9 @@ router.post('/login', requiredFields('username', 'password'), (req, res) => {
                 });
             }
 
-            const user_id = user._id;
+            const userId = user._id;
 
-            const tokenPayload = { _id: user_id, username: user.username };
+            const tokenPayload = { _id: userId, username: user.username };
             const token = jwt.sign(tokenPayload, config.JWT_SECRET, { expiresIn: config.JWT_EXPIRY });
 
             return res.status(200).json({ token });

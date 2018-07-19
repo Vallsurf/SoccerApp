@@ -17,7 +17,6 @@ module.exports = (passport) => {
                         username: user.username,
 
                     };
-                    console.log(userData);
                     done(null, userData);
                 } else {
                     done(null, false);

@@ -11,7 +11,6 @@ module.exports = {
         }
 
         if (report.reason === 'ValidationError') {
-            console.log(report);
             return {
                 message: parseErrors(report.errors),
             };
