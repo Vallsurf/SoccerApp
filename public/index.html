@@ -10,37 +10,41 @@
   <link rel="icon" type="image/png" href="/CSS/shield.png" />
 </head>
 <body class="welcome">
+  <main>
   <div class="container">
     <div class="login-container">
+      <section id="landing_section">
       <h1> DRAFT LINE</h1>
       <h3>DRAFT A TEAM. WIN THE ODDS.</h3>
       <div class ="landing">
       <button class="btn btn-info btn-block SelectLogin">Login</button>
       </div>
+      </section>
+      <section id="create_account_section">
         <div class="createForm">
           <div class="createAccount form-box">
            <div class="col-md-12">
             <form class="makeNew" action="" method="">
               <legend>CREATE AN ACCOUNT</legend>>
               <div class="form-group row">
-                <input type="text" id="firstName" placeholder="First Name" required>
-                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input aria-label="First Name" type="text" id="firstName" placeholder="First Name" required>
+                <input aria-label="Last Name" type="text" id="lastName" placeholder="Last Name" required>
               </div>
               <div class="form-group row">
-                <input name="newusername" id="newusername" type="text" placeholder="User Name" required>
-              </div>
-              <input type="password" id="newpassword" placeholder="Password" required>
+                <input aria-label="UserName" name="newusername" id="newusername" type="text" placeholder="User Name" required>
+                <input aria-label="password" type="password" id="newpassword" placeholder="Password" required>
+                </div>
               <button class="btn btn-info btn-block createAccount" type="submit" id="createAccount">Create</button>
             </form>
           </div>
         </div>
       </div>
+      </section>
       <div class="alert hidden" aria-hidden="true"><p> Something went Wrong. Please try again. </p></div>
       <div class="successful hidden"><h3>Account created!</h3><a href="/login.html">Login</a></div>
       </div>
     </div>
-    </div>
-    
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>
   </body>

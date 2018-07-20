@@ -99,6 +99,12 @@ color: white;
 	
 }
 
+.createteam {
+	max-height: 100% ;
+	margin: 0 auto;
+
+	
+}
 
 .createteam button{
 	width: 40% ;
@@ -195,6 +201,11 @@ color: white;
 
 }
 
+.navbar li{
+display: inline-block;
+
+}
+
 .navbar a {
 
 	color: white;
@@ -212,7 +223,12 @@ color: white;
 .navbar p{
 	padding: 15px;
 	margin: 0px;
+	margin-right:10px;
 	font-style: italic;
+}
+
+.navbar-nav { 
+    flex-direction: row;
 }
 
 .successful {
@@ -221,4 +237,20 @@ color: white;
 
 .successful h3{
 	color: green;
+}
+
+.confirmdelete {
+	padding:5px;
+}
+
+@media (max-width: 1000px) {
+  .home-container{
+  	width: 90%;
+  	margin-top:5px;
+  }
+
+  .teams-container{
+  	width: 90%;
+  }
+
 }

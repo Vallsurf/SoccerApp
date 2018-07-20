@@ -63,6 +63,5 @@ function submitNew() {
 
 
 $(login);
-$(createAccount);
 $(submitNew);
 $(selectLogin);

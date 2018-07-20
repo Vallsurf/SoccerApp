@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/CSS/index.css" type="text/css" />
-<link rel="icon" type="image/png" href="/CSS/shield.png" />
-<link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-    <title>Draft Line| Home </title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/CSS/index.css" type="text/css" />
+  <link rel="icon" type="image/png" href="/CSS/shield.png" />
+  <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <title>Draft Line | Home </title>
+</head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light " >
-  <a class="navbar-brand" href="#">
-    <span><img src="/CSS/shield.png" width="30" height="30" alt="" ></span>
-    DRAFT LINE
-  </a>
-<ul class="nav navbar-nav d-flex justify-content-end">
+  <main>
+   <nav class="navbar " >
+    <a class="navbar-brand" href="#">
+      <span><img src="/css/logo.png" width="30" height="30" alt="" ></span>
+      DRAFT LINE
+    </a>
+    <ul class="nav navbar-nav">
 
       <li><a href="/protected.html">Home</a></li>
       <li><a href="#" class="logout">Logout</a></li>
       <li class="username"></li>
     </ul>
-
-
-</nav>
-
-    <div class ="home-container">
-    <h2 id="email"></h2>
+  </nav>
+  <div class ="home-container">
     <div class="teams-container">
-    <h2>My Teams</h2>
-    <a class = "create" href="/">Create New Team</a>
-    <div id="teams"></div>
+      <h2>My Teams</h2>
+      <a class = "create" href="/">Create New Team</a>
+      <div id="teams"></div>
     </div>
     <div class="createteam hidden">
-        <h1>Create New Team</h1>
-        
-        <form class = "newteam">
-            <label for="teamname">New Team Name</label>
-            <input type="text" class="form-control" name="teamname" id="teamname" placeholder="Enter Team Name" required>
-            <h3>Available Players:</h3>
-                   <table class="table table-hover table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Position</th>
-                          <th scope="col">Select</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      </tbody>
-                    </table>
-                    <button class="btn btn-info btn-block" type="submit" id="createSubmit">Submit Team</button>
+      <h1>Create New Team</h1>
 
-                    </form>
-
-                    <div class ="warning"></div>
+      <form class = "newteam">
+        <label for="teamname">New Team Name</label>
+        <input type="text" class="form-control" name="teamname" id="teamname" placeholder="Enter Team Name" required>
+        <h3>Available Players:</h3>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Position</th>
+              <th scope="col">Select</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button class="btn btn-info btn-block" type="submit" id="createSubmit">Submit Team</button>
+      </form>
+      <div class ="warning"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/js/protected.js"></script>
+  </main>
 </body>
 </html>

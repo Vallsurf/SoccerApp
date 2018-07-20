@@ -1,74 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
-	    <meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="/CSS/index.css" type="text/css" />
-<link rel="icon" type="image/png" href="/CSS/shield.png" />
-<link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
-	<title>Draft Line |Team</title>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ <link rel="stylesheet" href="/CSS/index.css" type="text/css" />
+ <link rel="icon" type="image/png" href="/CSS/shield.png" />
+ <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+ <title>Draft Line | Team</title>
 </head>
 <body>
+  <main>
     <nav class="navbar navbar-expand-lg navbar-light bg-light " >
-  <a class="navbar-brand" href="#">
-    <span><img src="/css/logo.png" width="30" height="30" alt="" ></span>
-    DRAFT LINE
-  </a>
-<ul class="nav navbar-nav d-flex justify-content-end">
+      <a class="navbar-brand" href="#">
+        <span><img src="/css/logo.png" width="30" height="30" alt="" ></span>
+        DRAFT LINE
+      </a>
+      <ul class="nav navbar-nav d-flex justify-content-end">
 
-      <li><a href="/protected.html">Home</a></li>
-      <li><a href="#" class="logout">Logout</a></li>
-      <li class="username"></li>
-    </ul>
+        <li><a href="/protected.html">Home</a></li>
+        <li><a href="#" class="logout">Logout</a></li>
+        <li class="username"></li>
+      </ul>
+    </nav>
+    <div class ="home-container">
 
+      <h1 class="teamthis"></h1>
 
-</nav>
-	<div class ="home-container">
-	
-<h2 class="teamthis"></h2>
- 
-<div class="teaminfo">
-  
-	 <table class="table table-hover table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Position</th> 
-                          <th scope="col">Edit Position</th>                  
-                        </tr>
-                      </thead>
-                      <tbody>
-                      </tbody>
-                    </table>
-</div>
+      <div class="teaminfo">
 
- <div class="editteam hidden">
-        <div class="editname"></div>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th> 
+            <th scope="col">Edit Position</th>                  
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="editteam hidden">
+      <div class="editname"></div>
+      <tr>
 
         <form class = "players">
-            <h3>Available Players:</h3>
-                   <table class="table table-hover table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Position</th>
-                          <th scope="col">Select</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      </tbody>
-                    </table>
-                    <button class="btn btn-info btn-block" type="submit" id="editSubmit">Submit </button>
+          <h3>Available Players:</h3>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Select</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <button class="btn btn-info btn-block" type="submit" id="editSubmit">Submit </button>
 
-                    </form>
+        </form>
 
-                    <div class ="warning"></div>
-</div>
+        <div class ="warning"></div>
+      </div>
 
-
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/js/teamview.js"></script>
-</body>
-</html>
+  </body>
+  </html>

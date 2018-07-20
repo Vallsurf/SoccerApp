@@ -8,10 +8,11 @@ function parseJwt(token) {
 function getToken() {
     const token = sessionStorage.getItem('token');
     if (!token) {
-        return window.location.href = 'http://localhost:3000/';
+        return window.location.href = '/login.html';
     } return token;
 }
 
+//Loads teams for User
 function getTeams() {
     const token = getToken();
     $.ajax({
@@ -41,6 +42,7 @@ function getTeams() {
     });
 }
 
+//Confirmation button for Delete
 function promptDelete() {
     $('#teams').on('click', '.delete', function showdelete() {
         const teamid = $(this).attr('data-id');
@@ -52,6 +54,7 @@ function promptDelete() {
     });
 }
 
+//Deletes Team
 function deleteTeam() {
     $('#teams').on('click', '.confirmdelete', function () {
         const token = getToken();
@@ -72,6 +75,7 @@ function deleteTeam() {
     });
 }
 
+//Provides Form to create a new team
 function createTeam() {
     $('.create').on('click', (event) => {
         event.preventDefault();
@@ -91,7 +95,7 @@ function createTeam() {
                           <th scope="row">${i + 1}</th>
                           <td>${response[i].name}</td>
                           <td>${response[i].position}</td>
-                          <td><input type="checkbox"  name="selectedPlayer" value="${response[i]._id}"></td>
+                          <td><input aria-label="${response[i].name}" type="checkbox"  name="selectedPlayer" value="${response[i]._id}"></td>
                         </tr>
                        `,
                     );
@@ -105,6 +109,7 @@ function createTeam() {
     });
 }
 
+//Creates New Team on Submit
 function submitNewTeam() {
     $('.newteam').submit((event) => {
         event.preventDefault();

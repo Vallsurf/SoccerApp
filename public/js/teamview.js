@@ -107,7 +107,7 @@ function getPlayers() {
                         <th scope="row">${i + 1}</th>
                         <td>${response[i].name}</td>
                         <td>${response[i].position}</td>
-                        <td><input type="radio"  name="selectedPlayer" value="${response[i]._id}"></td>
+                        <td><input type="radio"  aria-label="${response[i].name}" name="selectedPlayer" value="${response[i]._id}"></td>
                         </tr>
                         `,
                     );
