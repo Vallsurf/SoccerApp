@@ -5,7 +5,7 @@ let position;
 function getToken() {
     const token = sessionStorage.getItem('token');
     if (!token) {
-        return window.location.href = 'http://localhost:3000/';
+        return window.location.href = '/';
     } return token;
 }
 
@@ -81,7 +81,7 @@ function loadTeam() {
         },
 
         error: () => {
-            window.location.href = 'http://localhost:3000/';
+            window.location.href = '/';
         },
     });
 }

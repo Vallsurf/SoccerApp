@@ -27,6 +27,11 @@ legend {
 	   
 }
 
+.login-container h4{
+	color: white;
+	   
+}
+
 .landing button{
 	display:inline-block;
 	width:20%;
@@ -102,13 +107,24 @@ color: white;
 .createteam {
 	max-height: 100% ;
 	margin: 0 auto;
-
+	margin-bottom:10px;
 	
 }
+
+.create{
+	font-size: 20px;
+	font-weight: bold;
+	
+	padding: 6px;
+	margin-bottom: 15px;
+	margin: 0 auto;
+}
+
 
 .createteam button{
 	width: 40% ;
 	margin: 0 auto;
+	margin-bottom: 50px;
 	margin-top: 10px;
 	
 }
@@ -161,7 +177,7 @@ color: white;
 .team {
 	 border: black 1px solid;
 	 padding: 10px;
-	 margin: 5px;
+	 margin: 15px;
 }
 
 .teaminfo {
@@ -233,10 +249,11 @@ display: inline-block;
 
 .successful {
 	text-align: center;
+
 }
 
 .successful h3{
-	color: green;
+	color: white;
 }
 
 .confirmdelete {
