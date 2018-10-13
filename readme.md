@@ -3,7 +3,7 @@
 ## Create a Fantasy Team! 
 
 ## Visit: 
-[Visit Live Site](https://agile-savannah-25580.herokuapp.com)
+[Visit Live Site](https://fantasydraftapp.herokuapp.com)
 
 ## Introduction: 
 DraftLine is a functional website for creating Users and drafting players into fantasy teams. It is intended to be a starting point for larger, more complex projects - but utilizes a fully functional backend for User Account Creation and Authentication, API endpoints for Creating Updating and Deleting Teams built from a datasource of Players. 
